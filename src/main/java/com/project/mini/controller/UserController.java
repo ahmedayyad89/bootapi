@@ -5,6 +5,7 @@ import com.project.mini.dto.UserDTO;
 import com.project.mini.model.UserModel;
 import com.project.mini.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +31,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value= "/user/login", method= GET)
     public UserDTO login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -39,7 +41,7 @@ public class UserController {
                             newUserModel.getMobileNumber() , newUserModel.getRole());
     }
 
-
+    @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value= "/user/logout", method= GET)
     public void logout(HttpServletRequest request, HttpServletResponse response)
     {

@@ -9,6 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -26,13 +28,15 @@ public class CustomAuthenticationProvider
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
 
-        String name = authentication.getName();
+        String email = authentication.getName();
         String password = authentication.getCredentials().toString();
-        UserModel userModel = userService.findByemail(name);
+        UserModel userModel = userService.findByemail(email);
         List<GrantedAuthority> roles= new ArrayList<>();
         roles.add(new SimpleGrantedAuthority(userModel.getRole()));
-        return new UsernamePasswordAuthenticationToken(
-                name, password, roles);
+        final UserDetails principal = new User(email, password, roles);
+        final Authentication auth = new UsernamePasswordAuthenticationToken(principal, password, roles);
+
+        return auth;
     }
 
 

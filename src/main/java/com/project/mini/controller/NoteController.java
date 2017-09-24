@@ -32,31 +32,32 @@ public class NoteController {
     PreDefNoteService preDefNoteService;
 
 
+    @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value= "/user/note/date", method = {GET})
     public NoteDTO get() {
         return noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
     }
 
-//    @Secured({"ROLE_USER"})
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value= "/admin/note/all", method = {GET})
     public List<NoteDTO> getAll() {
         return noteService.findAll();
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/note/save", method = {POST,PUT})
     public NoteDTO save(@Valid @RequestBody NoteDRO noteDRO) {
         return noteService.save(noteDRO);
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
     public PredefinedNoteModel getPreDefNotes() {
         return preDefNoteService.get(1);
     }
 
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
     public PredefinedNoteModel savePreDefNotes(@RequestBody PredefinedNoteModel predefinedNoteModel) {
         predefinedNoteModel.setId(1);
