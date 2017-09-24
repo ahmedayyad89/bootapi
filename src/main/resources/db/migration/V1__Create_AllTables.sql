@@ -1,4 +1,4 @@
-CREATE TABLE flyway.user
+CREATE TABLE user
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     mobileNumber varchar(255),
@@ -7,9 +7,9 @@ CREATE TABLE flyway.user
     role varchar(255),
     email varchar(255)
 );
-CREATE UNIQUE INDEX user_email_uindex ON flyway.user (email);
+CREATE UNIQUE INDEX user_email_uindex ON user (email);
 
-CREATE TABLE flyway.note
+CREATE TABLE note
 (
     date date PRIMARY KEY NOT NULL,
     note varchar(255),
@@ -20,7 +20,7 @@ CREATE TABLE flyway.note
     temp_min float
 );
 
-CREATE TABLE flyway.predefinednotes
+CREATE TABLE predefinednotes
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     fifteenTo20 varchar(255),
