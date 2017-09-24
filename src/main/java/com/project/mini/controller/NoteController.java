@@ -1,6 +1,8 @@
 package com.project.mini.controller;
 
 
+import com.project.mini.dro.NoteDRO;
+import com.project.mini.dto.NoteDTO;
 import com.project.mini.model.NoteModel;
 import com.project.mini.model.PredefinedNoteModel;
 import com.project.mini.service.NoteService;
@@ -16,7 +18,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+//@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin
 @RestController
 public class NoteController {
     @Autowired
@@ -27,43 +30,34 @@ public class NoteController {
 
 
     @RequestMapping(value= "/user/note/date", method = {GET})
-    public NoteModel get()
-    {
-        Date date = new Date(Calendar.getInstance().getTime().getTime());
-        return noteService.findByDate(date);
+    public NoteDTO get() {
+        return noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
     }
 
 
     @RequestMapping(value= "/admin/note/all", method = {GET})
-    public List<NoteModel> getAll()
-    {
+    public List<NoteDTO> getAll() {
         return noteService.findAll();
     }
 
 
     @RequestMapping(value = "/admin/note/save", method = {POST,PUT})
-    public NoteModel save(@RequestBody NoteModel noteModel)
-    {
-
-        NoteModel newNoteModel = noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
-        noteModel.setWeatherModel(newNoteModel.getWeatherModel());
-        return noteService.save(noteModel);
+    public NoteDTO save(@RequestBody NoteDRO noteDRO) {
+        return noteService.save(noteDRO);
     }
 
 
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
-    public PredefinedNoteModel getPreDefNotes()
-    {
+    public PredefinedNoteModel getPreDefNotes() {
         return preDefNoteService.get(1);
     }
 
 
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public PredefinedNoteModel savePreDefNotes(@RequestBody PredefinedNoteModel predefinedNoteModel)
-    {
+    public PredefinedNoteModel savePreDefNotes(@RequestBody PredefinedNoteModel predefinedNoteModel) {
         predefinedNoteModel.setId(1);
         return preDefNoteService.save(predefinedNoteModel);
-    }
+    } 
 
 
 }

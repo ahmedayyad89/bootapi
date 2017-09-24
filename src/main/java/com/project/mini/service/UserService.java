@@ -1,5 +1,7 @@
 package com.project.mini.service;
 
+import com.project.mini.dro.UserDRO;
+import com.project.mini.dto.UserDTO;
 import com.project.mini.model.UserModel;
 import com.project.mini.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +25,17 @@ public class UserService {
         }
         return userOptional.get();
     }
-    public UserModel save(UserModel userModel) {
-        try{
-            UserModel userModelSaved =  userRepository.save(userModel);
-            return userModelSaved;
+    public UserDTO save(UserDRO userDRO) throws Exception{
+        if (exists(userDRO.getEmail())){
+            throw new Exception("User Email Already exists");
         }
-        catch(Exception e)
-        {
-            return userModel;
-        }
+        UserModel userModel = new UserModel(null ,
+                userDRO.getName() , userDRO.getEmail() , userDRO.getPassword() ,
+                userDRO.getMobileNumber() , "ROLE_USER");
+        userModel = userRepository.save(userModel);
+        UserDTO userDTO = new UserDTO(userModel.getName() , userModel.getEmail() ,
+                userModel.getMobileNumber() , userModel.getRole());
+        return userDTO;
 
     }
     public UserModel findByemail(String email) {

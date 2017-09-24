@@ -1,12 +1,14 @@
 package com.project.mini.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "user")
+@AllArgsConstructor
 public class UserModel {
 
 

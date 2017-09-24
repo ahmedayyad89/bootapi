@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PreDefNoteService {
     @Autowired
-    PredefinedNoteRepository pDNRepository;
+    PredefinedNoteRepository predefinedNoteRepository;
 
     public PredefinedNoteModel get(Integer id) {
-        return pDNRepository.getById(id);
+        return predefinedNoteRepository.getById(id);
     }
 
     public PredefinedNoteModel save(PredefinedNoteModel predefinedNoteModel) {
-        return pDNRepository.save(predefinedNoteModel);
+        return predefinedNoteRepository.save(predefinedNoteModel);
     }
 
 }
