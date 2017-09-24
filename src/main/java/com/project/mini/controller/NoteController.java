@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
@@ -44,7 +45,7 @@ public class NoteController {
 
 
     @RequestMapping(value = "/admin/note/save", method = {POST,PUT})
-    public NoteDTO save(@RequestBody NoteDRO noteDRO) {
+    public NoteDTO save(@Valid @RequestBody NoteDRO noteDRO) {
         return noteService.save(noteDRO);
     }
 
