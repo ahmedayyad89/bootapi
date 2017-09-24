@@ -8,6 +8,7 @@ import com.project.mini.model.PredefinedNoteModel;
 import com.project.mini.service.NoteService;
 import com.project.mini.service.PreDefNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -21,6 +22,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 //@CrossOrigin(origins = {"http://localhost:3000"})
 @CrossOrigin
 @RestController
+
 public class NoteController {
     @Autowired
     NoteService noteService;// noteRepository;
@@ -34,7 +36,7 @@ public class NoteController {
         return noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
     }
 
-
+//    @Secured({"ROLE_USER"})
     @RequestMapping(value= "/admin/note/all", method = {GET})
     public List<NoteDTO> getAll() {
         return noteService.findAll();
@@ -53,11 +55,12 @@ public class NoteController {
     }
 
 
+
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
     public PredefinedNoteModel savePreDefNotes(@RequestBody PredefinedNoteModel predefinedNoteModel) {
         predefinedNoteModel.setId(1);
         return preDefNoteService.save(predefinedNoteModel);
-    } 
+    }
 
 
 }

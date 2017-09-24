@@ -3,6 +3,7 @@ package com.project.mini.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Data
@@ -30,5 +31,9 @@ public class UserModel {
 
     @Column
     private String role;
+
+    public UserModel() {
+
+    }
 
 }
