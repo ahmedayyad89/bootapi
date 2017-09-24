@@ -1,10 +1,10 @@
-package com.project.mini.controllers;
+package com.project.mini.controller;
 
 
-import com.project.mini.model.PredefinedNotes;
-import com.project.mini.services.NoteService;
-import com.project.mini.model.Note;
-import com.project.mini.services.PreDefNoteService;
+import com.project.mini.model.NoteModel;
+import com.project.mini.model.PredefinedNoteModel;
+import com.project.mini.service.NoteService;
+import com.project.mini.service.PreDefNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +27,7 @@ public class NoteController {
 
 
     @RequestMapping(value= "/user/note/date", method = {GET})
-    public Note get()
+    public NoteModel get()
     {
         Date date = new Date(Calendar.getInstance().getTime().getTime());
         return noteService.findByDate(date);
@@ -35,34 +35,34 @@ public class NoteController {
 
 
     @RequestMapping(value= "/admin/note/all", method = {GET})
-    public List<Note> getAll()
+    public List<NoteModel> getAll()
     {
         return noteService.findAll();
     }
 
 
     @RequestMapping(value = "/admin/note/save", method = {POST,PUT})
-    public Note save(@RequestBody Note note )
+    public NoteModel save(@RequestBody NoteModel noteModel)
     {
 
-        Note newNote = noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
-        note.setWeather(newNote.getWeather());
-        return noteService.save(note);
+        NoteModel newNoteModel = noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
+        noteModel.setWeatherModel(newNoteModel.getWeatherModel());
+        return noteService.save(noteModel);
     }
 
 
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
-    public PredefinedNotes getPreDefNotes()
+    public PredefinedNoteModel getPreDefNotes()
     {
         return preDefNoteService.get(1);
     }
 
 
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public PredefinedNotes savePreDefNotes(@RequestBody PredefinedNotes predefinedNotes)
+    public PredefinedNoteModel savePreDefNotes(@RequestBody PredefinedNoteModel predefinedNoteModel)
     {
-        predefinedNotes.setId(1);
-        return preDefNoteService.save(predefinedNotes);
+        predefinedNoteModel.setId(1);
+        return preDefNoteService.save(predefinedNoteModel);
     }
 
 

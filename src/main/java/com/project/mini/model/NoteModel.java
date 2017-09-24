@@ -7,7 +7,8 @@ import java.sql.Date;
 
 @Data
 @Entity
-public class Note {
+@Table(name = "note")
+public class NoteModel {
 
     @Id
     private Date date;
@@ -16,7 +17,7 @@ public class Note {
     private String note;
 
     @Embedded
-    private Weather weather;
+    private WeatherModel weatherModel;
 }
 
 

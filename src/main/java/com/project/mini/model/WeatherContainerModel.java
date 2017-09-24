@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherContainer {
+public class WeatherContainerModel {
 
-   private Weather main;
+   private WeatherModel main;
 
 }

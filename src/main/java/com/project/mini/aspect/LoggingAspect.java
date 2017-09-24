@@ -1,4 +1,4 @@
-package com.project.mini.aspects;
+package com.project.mini.aspect;
 
 
 import org.aspectj.lang.JoinPoint;

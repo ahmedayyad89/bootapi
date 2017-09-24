@@ -1,21 +1,18 @@
-package com.project.mini.controllers;
+package com.project.mini.controller;
 
-import com.project.mini.model.User;
-import com.project.mini.services.UserService;
-import com.project.mini.validators.UserValidator;
+import com.project.mini.model.UserModel;
+import com.project.mini.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import javax.validation.ValidationException;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -30,23 +27,15 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserValidator userValidator;
-
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(userValidator);
-    }
-
     @RequestMapping(value= "/user/login", method= GET)
-    public User login()
+    public UserModel login()
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails ud = (UserDetails)(auth).getPrincipal();
-        User newUser = userService.findByemail(ud.getUsername());
-        newUser.setId(null);
-        newUser.setPassword(null);
-        return newUser;
+        UserModel newUserModel = userService.findByemail(ud.getUsername());
+        newUserModel.setId(null);
+        newUserModel.setPassword(null);
+        return newUserModel;
     }
 
 
@@ -63,16 +52,16 @@ public class UserController {
 
 
 //    @RequestMapping(value= "/user/id/{id}", method = {GET})
-//    public User get(@PathVariable Integer id)
+//    public UserModel get(@PathVariable Integer id)
 //    {
 //        return userService.findById(id);
 //    }
 //
 //    @RequestMapping(value= "/user/email/{email}", method = {GET})
-//    public User get(@PathVariable String email)
+//    public UserModel get(@PathVariable String email)
 //    {
 //        try {
-//            User newUser = userService.findByemail(email);
+//            UserModel newUser = userService.findByemail(email);
 //            return newUser;
 //        }
 //        catch(Exception e) {
@@ -81,30 +70,30 @@ public class UserController {
 //    }
 
     @RequestMapping(value = "/save/user", method = {POST,PUT})
-    public User save(@Validated(UserValidator.class)  @RequestBody User user, BindingResult result)
+    public UserModel save(@Valid @RequestBody UserModel userModel, BindingResult result)
     {
-        userValidator.validate(user, result);
+
         if(result.hasErrors())
         {
             throw new ValidationException("There was a validation error.");
         }
-        if(!userService.exists(user.getEmail()))
+        if(!userService.exists(userModel.getEmail()))
         {
             try {
-                user.setId(null);
-                User newUser =  userService.save(user);
-                newUser.setId(null);
-                newUser.setPassword(null);
-                return newUser;
+                userModel.setId(null);
+                UserModel newUserModel =  userService.save(userModel);
+                newUserModel.setId(null);
+                newUserModel.setPassword(null);
+                return newUserModel;
             }
             catch (Exception e)
             {
-                return user;
+                return userModel;
             }
         }
         else
         {
-            return user;
+            return userModel;
         }
     }
 

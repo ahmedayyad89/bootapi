@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Weather {
+public class WeatherModel {
     private Float temp;
     private Float pressure;
     private Float humidity;
