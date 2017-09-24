@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import javax.sql.DataSource;
 
 @Configuration
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 
 
@@ -31,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic().and().authorizeRequests().anyRequest().authenticated()
+        http.httpBasic().and().authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll() // Should igonre OPTIONS requests
                 .and()
                 .csrf().disable().headers().frameOptions().disable();
