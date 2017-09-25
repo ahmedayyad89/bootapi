@@ -5,30 +5,29 @@ import com.project.mini.dto.UserDTO;
 import com.project.mini.model.UserModel;
 import com.project.mini.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.validation.ValidationException;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-//@CrossOrigin(origins = {"http://localhost:3000"})
-@CrossOrigin
+
 @RestController
 public class UserController {
 
 
     @Autowired
+            @Qualifier("userService")
     UserService userService;
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})

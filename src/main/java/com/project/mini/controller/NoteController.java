@@ -19,10 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-//@CrossOrigin(origins = {"http://localhost:3000"})
-@CrossOrigin
 @RestController
-
 public class NoteController {
     @Autowired
     NoteService noteService;// noteRepository;

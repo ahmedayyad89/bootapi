@@ -16,34 +16,34 @@ import java.util.Arrays;
 @Service("aspectService")
 public class LoggingAspect {
 
-//    private static final Logger logger = LoggerFactory
-//            .getLogger(LoggingAspect.class);
-//
-//
-//
-//    @Before("execution(* com.OLEProjects.mini.*.*.*(..))")
-//    public void printSignature(JoinPoint jp){
-//        logger.info(jp.getSignature().toLongString());
-//        Arrays.stream(jp.getArgs()).forEach(obj -> logger.debug(obj.getClass().toString()));
-//    }
-//
-//
-//    @AfterThrowing(pointcut = "execution(* com.OLEProjects.mini.*.*.*(..))", throwing = "exception")
-//    public void interceptor(Exception exception)
-//    {
-//        logger.error("intercepted "+exception.getCause().getMessage());
-//    }
-//
-//
-//    @AfterReturning(value = "execution(* com.OLEProjects.mini.*.*.*(..))", returning = "result")
-//    public void afterReturning(JoinPoint jp, Object result)
-//    {
-//        if(result == null)
-//        {
-//            logger.warn(jp.getSignature().toLongString().concat("Returned null"));
-//        }
-//    }
-//
+    private static final Logger logger = LoggerFactory
+            .getLogger(LoggingAspect.class);
+
+
+
+    @Before("execution(* com.project.mini.*.*.*(..))")
+    public void printSignature(JoinPoint jp){
+        logger.info(jp.getSignature().toLongString());
+        Arrays.stream(jp.getArgs()).forEach(obj -> logger.debug(obj.getClass().toString()));
+    }
+
+
+    @AfterThrowing(pointcut = "execution(* com.project.mini.*.*.*(..))", throwing = "exception")
+    public void interceptor(Exception exception)
+    {
+        logger.error("intercepted "+exception.getCause().getMessage());
+    }
+
+
+    @AfterReturning(value = "execution(* com.project.mini.*.*.*(..))", returning = "result")
+    public void afterReturning(JoinPoint jp, Object result)
+    {
+        if(result == null)
+        {
+            logger.warn(jp.getSignature().toLongString().concat("Returned null"));
+        }
+    }
+
 
 
 
