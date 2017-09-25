@@ -5,9 +5,11 @@ import com.project.mini.dto.PredfinedNotesDTO;
 import com.project.mini.service.PredefinedNotesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -29,7 +31,8 @@ public class PredfinedNotesController {
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public List<PredfinedNotesDTO> savePredfinedNotes(List<PredfinedNotesDRO> predfinedNotesDROS) {
+    public List<PredfinedNotesDTO> savePredfinedNotes(@RequestBody ArrayList<PredfinedNotesDRO> predfinedNotesDROS) {
+        System.out.println(predfinedNotesDROS.size());
         return predefinedNotesService.savePredfinedNotes(predfinedNotesDROS);
     }
 }
