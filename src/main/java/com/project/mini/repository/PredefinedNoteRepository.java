@@ -4,6 +4,8 @@ import com.project.mini.model.PredefinedNotesModel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PredefinedNoteRepository extends CrudRepository<PredefinedNotesModel, Integer> {
     PredefinedNotesModel getById(Integer id);
