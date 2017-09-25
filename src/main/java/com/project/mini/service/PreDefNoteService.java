@@ -1,6 +1,6 @@
 package com.project.mini.service;
 
-import com.project.mini.model.PredefinedNoteModel;
+import com.project.mini.model.PredefinedNotesModel;
 import com.project.mini.repository.PredefinedNoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ public class PreDefNoteService {
     @Autowired
     PredefinedNoteRepository predefinedNoteRepository;
 
-    public PredefinedNoteModel get(Integer id) {
+    public PredefinedNotesModel get(Integer id) {
         return predefinedNoteRepository.getById(id);
     }
 
-    public PredefinedNoteModel save(PredefinedNoteModel predefinedNoteModel) {
+    public PredefinedNotesModel save(PredefinedNotesModel predefinedNoteModel) {
         return predefinedNoteRepository.save(predefinedNoteModel);
     }
 

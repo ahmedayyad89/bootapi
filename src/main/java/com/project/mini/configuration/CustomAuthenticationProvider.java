@@ -34,7 +34,8 @@ public class CustomAuthenticationProvider
         List<GrantedAuthority> roles= new ArrayList<>();
         roles.add(new SimpleGrantedAuthority(userModel.getRole()));
         final UserDetails principal = new User(email, password, roles);
-        final Authentication auth = new UsernamePasswordAuthenticationToken(principal, password, roles);
+        final Authentication auth =
+                new UsernamePasswordAuthenticationToken(principal, password, roles);
 
         return auth;
     }

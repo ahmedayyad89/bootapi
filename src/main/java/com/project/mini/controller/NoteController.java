@@ -3,8 +3,7 @@ package com.project.mini.controller;
 
 import com.project.mini.dro.NoteDRO;
 import com.project.mini.dto.NoteDTO;
-import com.project.mini.model.NoteModel;
-import com.project.mini.model.PredefinedNoteModel;
+import com.project.mini.model.PredefinedNotesModel;
 import com.project.mini.service.NoteService;
 import com.project.mini.service.PreDefNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,14 +51,14 @@ public class NoteController {
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
-    public PredefinedNoteModel getPreDefNotes() {
+    public PredefinedNotesModel getPreDefNotes() {
         return preDefNoteService.get(1);
     }
 
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public PredefinedNoteModel savePreDefNotes(@RequestBody PredefinedNoteModel predefinedNoteModel) {
+    public PredefinedNotesModel savePreDefNotes(@RequestBody PredefinedNotesModel predefinedNoteModel) {
         predefinedNoteModel.setId(1);
         return preDefNoteService.save(predefinedNoteModel);
     }

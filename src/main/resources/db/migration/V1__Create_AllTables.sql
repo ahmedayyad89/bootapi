@@ -20,12 +20,10 @@ CREATE TABLE note
     temp_min float
 );
 
-CREATE TABLE predefinednotes
+CREATE TABLE weather_app.predefinednotes
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    fifteenTo20 varchar(255),
-    moreThat20 varchar(255),
-    oneTo10 varchar(255),
-    tenTo15 varchar(255)
+    maximumTemperture double,
+    message varchar(255),
+    minimumTemperture double
 );
-

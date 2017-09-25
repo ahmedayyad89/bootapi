@@ -32,7 +32,7 @@ public class UserController {
     UserService userService;
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
-    @RequestMapping(value= "/user/login", method= GET)
+    @RequestMapping(value = "/user/login", method= GET)
     public UserDTO login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails)(auth).getPrincipal();
@@ -43,8 +43,7 @@ public class UserController {
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value= "/user/logout", method= GET)
-    public void logout(HttpServletRequest request, HttpServletResponse response)
-    {
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);

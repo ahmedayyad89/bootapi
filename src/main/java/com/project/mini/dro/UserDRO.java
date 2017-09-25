@@ -23,6 +23,7 @@ public class UserDRO {
     private String password;
 
     @NotBlank(message = "Mobile Number must not be empty!")
-    @Pattern(regexp = "01\\d{9}")
+    @Pattern(regexp = "01\\d{9}" ,
+            message = "Mobile Number does not match number format")
     private String mobileNumber;
 }
