@@ -23,7 +23,7 @@ public class NoteService {
     NoteRepository noteRepository;
 
     @Autowired
-    PreDefNoteService preDefNoteService;
+    PredefinedNotesService preDefNoteService;
     public NoteDTO findByDate(Date dateId)
     {
         //find out if a note exists for that date
@@ -57,9 +57,7 @@ public class NoteService {
         return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());
     }
     public List<NoteDTO> findAll() {
-        List<NoteDTO> noteDTOs = new ArrayList<>();
         ArrayList<NoteModel> notes = (ArrayList<NoteModel>)noteRepository.findAll();
-        noteDTOs = notes.stream().map(x -> x.toDTO()).collect(Collectors.toList());
-        return  noteDTOs;
+        return  notes.stream().map(note -> note.toDTO()).collect(Collectors.toList());
     }
 }

@@ -1,5 +1,6 @@
 package com.project.mini.model;
 
+import com.project.mini.dto.PredfinedNotesDTO;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -19,4 +20,8 @@ public class PredefinedNotesModel {
 
     @Column
     private Double maximumTemperture;
+
+    public PredfinedNotesDTO toDTO() {
+        return new PredfinedNotesDTO(id , message , minimumTemperture , maximumTemperture);
+    }
 }
