@@ -6,7 +6,10 @@ import com.project.mini.dto.NoteDTO;
 import com.project.mini.model.NoteModel;
 import com.project.mini.model.WeatherContainerModel;
 import com.project.mini.repository.NoteRepository;
+import com.project.mini.support.WeatherFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@PropertySource("classpath:application.yml")
 public class NoteService {
     @Autowired
     NoteRepository noteRepository;
@@ -39,9 +43,7 @@ public class NoteService {
             NoteModel noteModel = new NoteModel(null , null , null);
             noteModel.setDate(new Date(Calendar.getInstance().getTime().getTime()));
             //Get today's weatherModel, save it in the noteModel object
-            RestTemplate restTemplate= new RestTemplate();
-            WeatherContainerModel weatherContainerModel =  restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?id=360630&APPID=e847d37e15ad8c49264375cab68417f0", WeatherContainerModel.class);
-            noteModel.setWeatherModel(weatherContainerModel.getMain());
+            noteModel.setWeatherModel(WeatherFactory.getWeather());
             // get default predefined noteModel for today's temperature
 //            noteModel.setNote(preDefNoteService.get(1).getPredeNote(noteModel.getWeatherModel().getTemp()-(float)273.15));
             //save today's noteModel in the db for future retrieval
