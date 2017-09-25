@@ -23,7 +23,7 @@ public class NoteService {
     NoteRepository noteRepository;
 
     @Autowired
-    PredefinedNotesService preDefNoteService;
+    PredefinedNotesService predefinedNotesService;
     public NoteDTO findByDate(Date dateId)
     {
         //find out if a note exists for that date

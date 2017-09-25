@@ -20,7 +20,7 @@ CREATE TABLE note
     temp_min float
 );
 
-CREATE TABLE weather_app.predefinednotes
+CREATE TABLE predefinednotes
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     maximumTemperture double,

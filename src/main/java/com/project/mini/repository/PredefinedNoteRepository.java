@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PredefinedNoteRepository extends CrudRepository<PredefinedNotesModel, Integer> {
     PredefinedNotesModel findById(Integer id);
-    List<PredefinedNotesModel> findALL();
+    List<PredefinedNotesModel> findAll();
 
 }
