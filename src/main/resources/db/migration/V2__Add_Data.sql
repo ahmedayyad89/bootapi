@@ -1,4 +1,4 @@
-INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'Mamdouh Ahmed', '123456', 'ROLE_ADMIN', 'admin@admin.a');
+INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'Khaled Ahmed', '123456', 'ROLE_ADMIN', 'admin@orange.com');
 INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'User McUserton', '123456', 'ROLE_USER', 'user@user.a');
 INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'Moha', '123456', 'ROLE_USER', 'moka@user.a');
 INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'Mohandis Mahatma Ghandi', '123456', 'ROLE_USER', 'ghandi@user.a');

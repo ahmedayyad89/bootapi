@@ -19,7 +19,7 @@ public class PredefinedNotesService {
     PredefinedNoteRepository predefinedNoteRepository;
 
     public List<PredfinedNotesDTO> getAllPredfniedNotes() {
-        return predefinedNoteRepository.findAll()
+        return   predefinedNoteRepository.findAll()
                 .stream()
                 .map(predfniedNotes -> predfniedNotes.toDTO())
                 .collect(Collectors.toList());
