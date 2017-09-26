@@ -9,10 +9,10 @@ INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('0112978819
 INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'Mamdouh', '123456', 'ROLE_USER', 'mamdouh64@user.com');
 
 
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (1, '', 10);
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (10, '', 15);
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (15, '', 20);
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (20, '', 30);
+INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (10, 'dedede', 1);
+INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (15, '', 10);
+INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (20, '', 15);
+INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (70, '', 20);
 
 -- INSERT INTO predefinednotes (fifteenTo20, moreThat20, oneTo10, tenTo15) VALUES ('Bring your coats.', 'The weather is fine!', 'prepare to die.', '10 - 15');
 --
@@ -24,3 +24,4 @@ INSERT INTO note (date, note, humidity, pressure, temp, temp_max, temp_min) VALU
 INSERT INTO note (date, note, humidity, pressure, temp, temp_max, temp_min) VALUES ('2017-09-19', 'When will inspection day come???!', 54, 1012, 302.15, 302.15, 302.15);
 INSERT INTO note (date, note, humidity, pressure, temp, temp_max, temp_min) VALUES ('2017-09-20', 'Nima', 38, 1012, 307.15, 307.15, 307.15);
 INSERT INTO note (date, note, humidity, pressure, temp, temp_max, temp_min) VALUES ('2017-09-24', 'The weather is fine!', 42, 1016, 301.15, 301.15, 301.15);
+INSERT INTO note (date, note, humidity, pressure, temp, temp_max, temp_min) VALUES ('2017-09-25', 'Halla Halla Ya Fawaaaaz!', 51, 1015, 301.15, 301.15, 301.15);
