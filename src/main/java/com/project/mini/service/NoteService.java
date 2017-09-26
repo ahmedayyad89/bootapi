@@ -47,6 +47,9 @@ public class NoteService {
             // get default predefined noteModel for today's temperature
 //            noteModel.setNote(preDefNoteService.get(1).getPredeNote(noteModel.getWeatherModel().getTemp()-(float)273.15));
             //save today's noteModel in the db for future retrieval
+
+            //TODO: find a better way to handle this
+            noteModel.setNote(predefinedNotesService.getPreefinedNote(noteModel.getWeatherModel().getTemp()));
             noteModel = noteRepository.save(noteModel);
             return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());
         }
