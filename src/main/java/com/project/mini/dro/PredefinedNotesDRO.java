@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 
 @Data
-public class PredfinedNotesDRO {
+public class PredefinedNotesDRO {
     private Integer id;
 
     @NotBlank(message = "Note must note be empty")

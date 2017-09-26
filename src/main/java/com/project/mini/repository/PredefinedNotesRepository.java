@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PredefinedNoteRepository extends CrudRepository<PredefinedNotesModel, Integer> {
+public interface PredefinedNotesRepository extends CrudRepository<PredefinedNotesModel, Integer> {
     Optional<PredefinedNotesModel> findById(Integer id);
     List<PredefinedNotesModel> findAll();
 

@@ -17,13 +17,12 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public UserModel findById(Integer id) {
+    public UserDTO findById(Integer id) {
         Optional<UserModel> userOptional = userRepository.findById(id);
-        if(!userOptional.isPresent())
-        {
+        if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException("UserModel With id="+id+" has not been found.");
         }
-        return userOptional.get();
+        return userOptional.get().toDTO();
     }
     public UserDTO save(UserDRO userDRO) throws Exception{
         if (exists(userDRO.getEmail())){
@@ -38,13 +37,12 @@ public class UserService {
         return userDTO;
 
     }
-    public UserModel findByemail(String email) {
+    public UserDTO findByemail(String email) throws UsernameNotFoundException{
         Optional<UserModel> userOptional = userRepository.findByEmail(email);
-        if(!userOptional.isPresent())
-        {
+        if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException("UserModel With email="+email+" has not been found.");
         }
-        return userOptional.get();
+        return userOptional.get().toDTO();
     }
     public Boolean exists(String email) {
         return userRepository.existsByEmail(email);

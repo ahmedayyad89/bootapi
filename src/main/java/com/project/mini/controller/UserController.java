@@ -32,12 +32,10 @@ public class UserController {
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value = "/user/login", method= GET)
-    public UserDTO login() {
+    public UserDTO login() throws Exception{
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails)(auth).getPrincipal();
-        UserModel newUserModel = userService.findByemail(userDetails.getUsername());
-        return new UserDTO(newUserModel.getName() , newUserModel.getEmail() ,
-                            newUserModel.getMobileNumber() , newUserModel.getRole());
+        return userService.findByemail(userDetails.getUsername());
     }
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})

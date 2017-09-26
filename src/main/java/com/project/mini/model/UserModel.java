@@ -1,6 +1,7 @@
 package com.project.mini.model;
 
 
+import com.project.mini.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -34,6 +35,10 @@ public class UserModel {
 
     public UserModel() {
 
+    }
+
+    public UserDTO toDTO() {
+        return new UserDTO(name , email , mobileNumber , role);
     }
 
 }

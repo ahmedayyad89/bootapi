@@ -1,5 +1,6 @@
 package com.project.mini.configuration;
 
+import com.project.mini.dto.UserDTO;
 import com.project.mini.model.UserModel;
 import com.project.mini.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,10 @@ public class CustomAuthenticationProvider
 
         String email = authentication.getName();
         String password = authentication.getCredentials().toString();
-        UserModel userModel = userService.findByemail(email);
+        UserDTO userDTO = null;
+        userDTO = userService.findByemail(email);
         List<GrantedAuthority> roles= new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(userModel.getRole()));
+        roles.add(new SimpleGrantedAuthority(userDTO.getRole()));
         final UserDetails principal = new User(email, password, roles);
         final Authentication auth =
                 new UsernamePasswordAuthenticationToken(principal, password, roles);

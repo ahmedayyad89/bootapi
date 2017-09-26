@@ -2,6 +2,7 @@ package com.project.mini.service;
 
 import com.project.mini.dto.NoteDTO;
 import com.project.mini.model.NoteModel;
+import com.project.mini.model.UserModel;
 import com.project.mini.repository.NoteRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,4 +36,5 @@ public class NoteServiceUnitTest {
         Assert.assertEquals(noteService.findByDate(new Date(2017,9,25)),
                 expectedNoteDTO);
     }
+
 }

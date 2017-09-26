@@ -4,15 +4,12 @@ package com.project.mini.service;
 import com.project.mini.dro.NoteDRO;
 import com.project.mini.dto.NoteDTO;
 import com.project.mini.model.NoteModel;
-import com.project.mini.model.WeatherContainerModel;
 import com.project.mini.repository.NoteRepository;
 import com.project.mini.support.WeatherFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
 
 import java.sql.Date;
@@ -36,9 +33,7 @@ public class NoteService {
             NoteModel noteModel =
                     noteOptional.get();
             return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());
-        }
-        else
-        {
+        } else {
             //Make a new noteModel object, for today
             NoteModel noteModel = new NoteModel(null , null , null);
             noteModel.setDate(new Date(Calendar.getInstance().getTime().getTime()));
@@ -49,7 +44,7 @@ public class NoteService {
             //save today's noteModel in the db for future retrieval
 
             //TODO: find a better way to handle this
-            noteModel.setNote(predefinedNotesService.getPreefinedNote(noteModel.getWeatherModel().getTemp()));
+            noteModel.setNote(predefinedNotesService.getPredefinedNote(noteModel.getWeatherModel().getTemp()));
             noteModel = noteRepository.save(noteModel);
             return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());
         }

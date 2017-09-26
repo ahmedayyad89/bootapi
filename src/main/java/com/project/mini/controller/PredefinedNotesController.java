@@ -1,7 +1,7 @@
 package com.project.mini.controller;
 
-import com.project.mini.dro.PredfinedNotesDRO;
-import com.project.mini.dto.PredfinedNotesDTO;
+import com.project.mini.dro.PredefinedNotesDRO;
+import com.project.mini.dto.PredefinedNotesDTO;
 import com.project.mini.service.PredefinedNotesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -17,21 +17,21 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
-public class PredfinedNotesController {
+public class PredefinedNotesController {
     @Autowired
     private PredefinedNotesService predefinedNotesService;
 
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
-    public List<PredfinedNotesDTO> getAllPredfinedNotes() {
-        return predefinedNotesService.getAllPredfniedNotes();
+    public List<PredefinedNotesDTO> getAllPredfinedNotes() {
+        return predefinedNotesService.getAllPredefniedNotes();
     }
 
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public List<PredfinedNotesDTO> savePredfinedNotes(@RequestBody ArrayList<PredfinedNotesDRO> predfinedNotesDROS) {
+    public List<PredefinedNotesDTO> savePredfinedNotes(@RequestBody ArrayList<PredefinedNotesDRO> predfinedNotesDROS) {
         System.out.println(predfinedNotesDROS.size());
         return predefinedNotesService.savePredfinedNotes(predfinedNotesDROS);
     }

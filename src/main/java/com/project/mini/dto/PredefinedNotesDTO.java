@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class PredfinedNotesDTO {
+public class PredefinedNotesDTO {
     private Integer id;
     private String message;
     private Double minimumTemperture;
