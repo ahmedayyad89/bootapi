@@ -41,5 +41,15 @@ public class PredefinedNotesService {
                 .map(predfniedNotes -> predfniedNotes.toDTO())
                 .collect(Collectors.toList());
     }
+    public String getPreefinedNote(double temperaure) {
+        List<PredfinedNotesDTO> allPredefinedNotes = this.getAllPredfniedNotes();
+        for (PredfinedNotesDTO note : allPredefinedNotes) {
+            if(temperaure >= note.getMinimumTemperture() && note.getMaximumTemperture()> temperaure)
+            {
+                return  note.getMessage();
+            }
+        }
+        return "RANGE NOT DEFINED"
+    }
 
 }
