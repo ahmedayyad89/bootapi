@@ -23,13 +23,24 @@ public class PredefinedNoteRepositoryUnitTest {
     private final Integer PREDEFINED_NOTE_ID = 1;
     private final Integer PREDEFINED_NOTE_ID_NOT_VALID = 5;
     private final String DEFAULT_MESSAGE = "";
-    private final int ID = 0;
+    private final String DEFAULT_MESSAGE_NOT_VALID = "Not valid";
+    private final Integer INDEX = 0;
     @Test
-    public void getAllPredefinedNotesTest () {
+    public void getAllPredefinedNotesTestValid () {
         List<PredefinedNotesModel> predfinedNotesDTOList = predefinedNoteRepository.findAll();
 
         Assert.assertTrue(predfinedNotesDTOList.size() > 0);
-        Assert.assertEquals(predfinedNotesDTOList.get(ID).getMessage(), DEFAULT_MESSAGE);
+        Assert.assertEquals(predfinedNotesDTOList.get(INDEX).getMessage(),
+                DEFAULT_MESSAGE);
+    }
+
+    @Test
+    public void getAllPredefinedNotesTestNotValid () {
+        List<PredefinedNotesModel> predfinedNotesDTOList = predefinedNoteRepository.findAll();
+
+        Assert.assertFalse(predfinedNotesDTOList.size() == 0);
+        Assert.assertNotEquals(predfinedNotesDTOList.get(INDEX).getMessage(),
+                DEFAULT_MESSAGE_NOT_VALID);
     }
 
     @Test
