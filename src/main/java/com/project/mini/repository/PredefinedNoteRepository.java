@@ -5,10 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PredefinedNoteRepository extends CrudRepository<PredefinedNotesModel, Integer> {
-    PredefinedNotesModel findById(Integer id);
+    Optional<PredefinedNotesModel> findById(Integer id);
     List<PredefinedNotesModel> findAll();
 
 }

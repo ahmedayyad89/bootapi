@@ -32,7 +32,7 @@ public class PredefinedNotesService {
         for (PredfinedNotesDRO predfinedNoteDRO:
              predfinedNotesDRO) {
             PredefinedNotesModel predefinedNotesModel =
-                    predefinedNoteRepository.findById(predfinedNoteDRO.getId());
+                    predefinedNoteRepository.findById(predfinedNoteDRO.getId()).get();
             predefinedNotesModel.setMessage(predfinedNoteDRO.getMessage());
             predefinedNotesModels.add(predefinedNoteRepository.save(predefinedNotesModel));
         }
