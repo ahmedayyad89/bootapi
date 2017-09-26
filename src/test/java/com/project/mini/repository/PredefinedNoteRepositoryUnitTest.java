@@ -22,11 +22,14 @@ public class PredefinedNoteRepositoryUnitTest {
 
     private final Integer PREDEFINED_NOTE_ID = 1;
     private final Integer PREDEFINED_NOTE_ID_NOT_VALID = 5;
-
+    private final String DEFAULT_MESSAGE = "";
+    private final int ID = 0;
     @Test
     public void getAllPredefinedNotesTest () {
         List<PredefinedNotesModel> predfinedNotesDTOList = predefinedNoteRepository.findAll();
-        Assert.assertEquals(predfinedNotesDTOList.getClass(), ArrayList.class);
+
+        Assert.assertTrue(predfinedNotesDTOList.size() > 0);
+        Assert.assertEquals(predfinedNotesDTOList.get(ID).getMessage(), DEFAULT_MESSAGE);
     }
 
     @Test
