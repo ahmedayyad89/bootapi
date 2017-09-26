@@ -24,7 +24,7 @@ public class NoteController {
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value= "/user/note/date", method = {GET})
-    public NoteDTO get() {
+    public NoteDTO findNoteByDate() {
         return noteService.findByDate(new Date(Calendar.getInstance().getTime().getTime()));
     }
 
