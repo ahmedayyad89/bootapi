@@ -50,9 +50,11 @@ public class NoteServiceUnitTest {
         NoteModel expectedNoteModel = new NoteModel(new Date(2017,9,25), "", null);
         Optional<NoteModel> expectedNoteModelOptional = Optional.ofNullable(null);
         PowerMockito.mockStatic(WeatherFactory.class);
+        WeatherModel expectedWeather = new WeatherModel();
+        expectedWeather.setTemp(5.0f);
         //Expectations
         when(noteRepository.findByDate(any(Date.class))).thenReturn(expectedNoteModelOptional);
-        PowerMockito.when(WeatherFactory.getWeather()).thenReturn(new WeatherModel());
+        PowerMockito.when(WeatherFactory.getWeather()).thenReturn(expectedWeather);
         when(predefinedNotesService.getPredefinedNote(any(Float.class))).thenReturn("");
         when(noteRepository.save(any(NoteModel.class))).thenReturn(expectedNoteModel);
 
