@@ -27,7 +27,7 @@ public class UserController {
 
 
     @Autowired
-            @Qualifier("userService")
+    @Qualifier("userService")
     UserService userService;
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
