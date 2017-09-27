@@ -10,10 +10,10 @@ INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('0112978819
 INSERT INTO user (mobileNumber, name, password, role, email) VALUES ('01129788199', 'Mamdouh', '123456', 'ROLE_USER', 'mamdouh64@user.com');
 
 
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (10, '', 1);
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (15, '', 10);
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (20, '', 15);
-INSERT INTO predefinednotes (maximumTemperture, message, minimumTemperture) VALUES (70, '', 20);
+INSERT INTO predefinednotes (maximumTemperature, message, minimumTemperature) VALUES (10, '', 1);
+INSERT INTO predefinednotes (maximumTemperature, message, minimumTemperature) VALUES (15, '', 10);
+INSERT INTO predefinednotes (maximumTemperature, message, minimumTemperature) VALUES (20, '', 15);
+INSERT INTO predefinednotes (maximumTemperature, message, minimumTemperature) VALUES (70, '', 20);
 
 -- INSERT INTO predefinednotes (fifteenTo20, moreThat20, oneTo10, tenTo15) VALUES ('Bring your coats.', 'The weather is fine!', 'prepare to die.', '10 - 15');
 --

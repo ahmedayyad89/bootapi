@@ -25,8 +25,8 @@ CREATE TABLE note
 CREATE TABLE predefinednotes
 (
     id int(11) NOT NULL AUTO_INCREMENT,
-    maximumTemperture double,
+    maximumTemperature double,
     message varchar(255),
-    minimumTemperture double,
+    minimumTemperature double,
     PRIMARY KEY (id)
 );
