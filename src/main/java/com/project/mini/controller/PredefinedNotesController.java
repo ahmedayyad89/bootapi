@@ -32,7 +32,6 @@ public class PredefinedNotesController {
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
     public List<PredefinedNotesDTO> savePredefinedNotes(@RequestBody ArrayList<PredefinedNotesDRO> predfinedNotesDROS) {
-        System.out.println(predfinedNotesDROS.size());
         return predefinedNotesService.savePredfinedNotes(predfinedNotesDROS);
     }
 }
