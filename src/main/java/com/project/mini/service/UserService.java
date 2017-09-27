@@ -20,7 +20,8 @@ public class UserService {
     public UserDTO findById(Integer id) {
         Optional<UserModel> userOptional = userRepository.findById(id);
         if(!userOptional.isPresent()) {
-            throw new UsernameNotFoundException("UserModel With id="+id+" has not been found.");
+            throw new UsernameNotFoundException
+                    ("UserModel With id="+id+" has not been found.");
         }
         return userOptional.get().toDTO();
     }
@@ -40,7 +41,8 @@ public class UserService {
     public UserDTO findByemail(String email) throws UsernameNotFoundException{
         Optional<UserModel> userOptional = userRepository.findByEmail(email);
         if(!userOptional.isPresent()) {
-            throw new UsernameNotFoundException("UserModel With email="+email+" has not been found.");
+            throw new UsernameNotFoundException
+                    ("UserModel With email="+email+" has not been found.");
         }
         return userOptional.get().toDTO();
     }

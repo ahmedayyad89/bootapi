@@ -33,7 +33,6 @@ public class NoteServiceUnitTest {
 
     @Test
     public void findByDateValidTest(){
-
         NoteDTO expectedNoteDTO = new NoteDTO(new Date(2017,9,25), "", null);
         NoteModel expectedNoteModel = new NoteModel(new Date(2017,9,25), "", null);
         Optional<NoteModel> expectedNoteModelOptional = Optional.of(expectedNoteModel);
@@ -45,7 +44,6 @@ public class NoteServiceUnitTest {
 
     @Test
     public void findByDateNotValidTest(){
-
         NoteDTO expectedNoteDTO = new NoteDTO(new Date(2017,9,25), "", null);
         NoteModel expectedNoteModel = new NoteModel(new Date(2017,9,25), "", null);
         Optional<NoteModel> expectedNoteModelOptional = Optional.ofNullable(null);
@@ -63,8 +61,7 @@ public class NoteServiceUnitTest {
     }
 
     @Test
-    public void saveTest()
-    {
+    public void saveTest() {
         NoteDTO expectedNoteDTO = new NoteDTO(new Date(2017,9,25), "NewNote", null );
         NoteModel middleNoteModel = new NoteModel(new Date(2017,9,25), "" , null);
 
@@ -79,10 +76,8 @@ public class NoteServiceUnitTest {
     }
 
     @Test
-    public void findAllTest()
-    {
-        when(noteRepository.findAll()).thenReturn(new ArrayList<NoteModel>(){
-            {
+    public void findAllTest() {
+        when(noteRepository.findAll()).thenReturn(new ArrayList<NoteModel>(){{
                 add(new NoteModel(new Date(2017,9,25), "", null));
                 add(new NoteModel(new Date(2017,9,26), "", null));
                 add(new NoteModel(new Date(2017,9,27), "", null));

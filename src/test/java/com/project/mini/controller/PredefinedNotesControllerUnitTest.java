@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import com.project.mini.dro.PredefinedNotesDRO;
 import com.project.mini.dto.PredefinedNotesDTO;
 import com.project.mini.service.PredefinedNotesService;
-import com.project.mini.service.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -84,7 +83,7 @@ public class PredefinedNotesControllerUnitTest {
         }};
 
 
-        when(predefinedNotesService.savePredfinedNotes(any(List.class))).thenReturn(predefinedNotesDTOList);
+        when(predefinedNotesService.savePredefinedNotes(any(List.class))).thenReturn(predefinedNotesDTOList);
 
 
         ResultActions resultActions = mvc.perform(post("/admin/predefnotes")

@@ -38,7 +38,6 @@ public class CustomAuthenticationProvider
         final UserDetails principal = new User(email, password, roles);
         final Authentication auth =
                 new UsernamePasswordAuthenticationToken(principal, password, roles);
-
         return auth;
     }
 

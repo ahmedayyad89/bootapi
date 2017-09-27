@@ -110,6 +110,4 @@ public class NoteControllerUnitTests {
                 .andExpect(status().is(400));
 
     }
-
-
 }

@@ -24,13 +24,13 @@ public class LoggingAspect {
     @Before("execution(* com.project.mini.*.*.*(..))")
     public void printSignature(JoinPoint jp){
         logger.info(jp.getSignature().toLongString());
-        Arrays.stream(jp.getArgs()).forEach(obj -> logger.debug(obj.getClass().toString()));
+        Arrays.stream(jp.getArgs())
+                .forEach(obj -> logger.debug(obj.getClass().toString()));
     }
 
 
     @AfterThrowing(pointcut = "execution(* com.project.mini.*.*.*(..))", throwing = "exception")
-    public void interceptor(Exception exception)
-    {
+    public void interceptor(Exception exception) {
         logger.error("intercepted "+exception.getCause().getMessage());
     }
 

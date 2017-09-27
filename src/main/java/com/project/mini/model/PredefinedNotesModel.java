@@ -18,13 +18,13 @@ public class PredefinedNotesModel {
     private String message;
 
     @Column
-    private Double minimumTemperture;
+    private Double minimumTemperature;
 
     @Column
-    private Double maximumTemperture;
+    private Double maximumTemperature;
 
     public PredefinedNotesDTO toDTO() {
-        return new PredefinedNotesDTO(id , message , minimumTemperture , maximumTemperture);
+        return new PredefinedNotesDTO(id , message , minimumTemperature, maximumTemperature);
     }
 
     public PredefinedNotesModel(){}

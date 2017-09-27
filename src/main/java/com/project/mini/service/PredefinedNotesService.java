@@ -21,31 +21,31 @@ public class PredefinedNotesService {
     public List<PredefinedNotesDTO> getAllPredefniedNotes() {
         return   predefinedNoteRepository.findAll()
                 .stream()
-                .map(predfniedNotes -> predfniedNotes.toDTO())
+                .map(predefinedNotes -> predefinedNotes.toDTO())
                 .collect(Collectors.toList());
     }
 
     public List<PredefinedNotesDTO>
-                savePredfinedNotes(List<PredefinedNotesDRO> predfinedNotesDRO) {
+            savePredefinedNotes(List<PredefinedNotesDRO> predfinedNotesDRO) {
         List<PredefinedNotesModel> predefinedNotesModels =
                 new ArrayList<>();
-        for (PredefinedNotesDRO predfinedNoteDRO:
+        for (PredefinedNotesDRO predefinedNoteDRO:
              predfinedNotesDRO) {
             PredefinedNotesModel predefinedNotesModel =
-                    predefinedNoteRepository.findById(predfinedNoteDRO.getId()).get();
-            predefinedNotesModel.setMessage(predfinedNoteDRO.getMessage());
+                    predefinedNoteRepository.findById(predefinedNoteDRO.getId()).get();
+            predefinedNotesModel.setMessage(predefinedNoteDRO.getMessage());
             predefinedNotesModels.add(predefinedNoteRepository.save(predefinedNotesModel));
         }
-        return   predefinedNotesModels
+        return predefinedNotesModels
                 .stream()
-                .map(predfniedNotes -> predfniedNotes.toDTO())
+                .map(predefinedNotes -> predefinedNotes.toDTO())
                 .collect(Collectors.toList());
     }
     public String getPredefinedNote(double temperature) {
         List<PredefinedNotesDTO> allPredefinedNotes = this.getAllPredefniedNotes();
         for (PredefinedNotesDTO note : allPredefinedNotes) {
-            if(temperature >= note.getMinimumTemperture() &&
-                    note.getMaximumTemperture()> temperature) {
+            if(temperature >= note.getMinimumTemperature() &&
+                    note.getMaximumTemperature()> temperature) {
                 return  note.getMessage();
             }
         }

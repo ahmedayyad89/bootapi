@@ -24,10 +24,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
 public class UserController {
-
-
     @Autowired
-    @Qualifier("userService")
     UserService userService;
 
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
@@ -46,8 +43,6 @@ public class UserController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
     }
-
-
     @RequestMapping(value = "/save/user", method = {POST,PUT})
     public UserDTO save(@Valid @RequestBody UserDRO userDRO) throws Exception {
         return userService.save(userDRO);

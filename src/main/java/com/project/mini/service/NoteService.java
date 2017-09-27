@@ -25,8 +25,8 @@ public class NoteService {
 
     @Autowired
     PredefinedNotesService predefinedNotesService;
-    public NoteDTO findByDate(Date dateId)
-    {
+
+    public NoteDTO findByDate(Date dateId) {
         //find out if a note exists for that date
         Optional<NoteModel> noteOptional= noteRepository.findByDate(dateId);
         if(noteOptional.isPresent()){ // A note does exist for that date, return it{
@@ -43,7 +43,6 @@ public class NoteService {
 //            noteModel.setNote(preDefNoteService.get(1).getPredeNote(noteModel.getWeatherModel().getTemp()-(float)273.15));
             //save today's noteModel in the db for future retrieval
 
-            //TODO: find a better way to handle this
             noteModel.setNote(predefinedNotesService.getPredefinedNote(noteModel.getWeatherModel().getTemp()));
             noteModel = noteRepository.save(noteModel);
             return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());

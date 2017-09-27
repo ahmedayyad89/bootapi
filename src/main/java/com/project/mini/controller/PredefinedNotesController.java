@@ -31,7 +31,9 @@ public class PredefinedNotesController {
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public List<PredefinedNotesDTO> savePredefinedNotes(@RequestBody ArrayList<PredefinedNotesDRO> predfinedNotesDROS) {
-        return predefinedNotesService.savePredfinedNotes(predfinedNotesDROS);
+    public List<PredefinedNotesDTO>
+            savePredefinedNotes(@RequestBody ArrayList<PredefinedNotesDRO>
+                                        predfinedNotesDROS) {
+        return predefinedNotesService.savePredefinedNotes(predfinedNotesDROS);
     }
 }

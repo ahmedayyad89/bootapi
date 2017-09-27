@@ -8,6 +8,6 @@ import lombok.Data;
 public class PredefinedNotesDTO {
     private Integer id;
     private String message;
-    private Double minimumTemperture;
-    private Double maximumTemperture;
+    private Double minimumTemperature;
+    private Double maximumTemperature;
 }

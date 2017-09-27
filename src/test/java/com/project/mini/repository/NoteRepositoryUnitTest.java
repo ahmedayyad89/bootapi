@@ -39,7 +39,6 @@ public class NoteRepositoryUnitTest {
 
     @Test
     public void findNoteByDateTestNotExist() {
-
         Assert.assertFalse(
                 noteRepository.findByDate(new Date(2017 , 9 , 27))
                         .isPresent()

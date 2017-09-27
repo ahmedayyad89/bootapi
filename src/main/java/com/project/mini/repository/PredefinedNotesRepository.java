@@ -11,5 +11,4 @@ import java.util.Optional;
 public interface PredefinedNotesRepository extends CrudRepository<PredefinedNotesModel, Integer> {
     Optional<PredefinedNotesModel> findById(Integer id);
     List<PredefinedNotesModel> findAll();
-
 }

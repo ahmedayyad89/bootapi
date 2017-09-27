@@ -7,7 +7,5 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherContainerModel {
-
    private WeatherModel main;
-
 }

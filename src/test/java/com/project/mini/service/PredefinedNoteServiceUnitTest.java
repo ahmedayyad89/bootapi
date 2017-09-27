@@ -32,10 +32,11 @@ public class PredefinedNoteServiceUnitTest {
     public void getAllPredefinedNotesValidTest() {
         List<PredefinedNotesModel> returned =
                 new ArrayList<>();
-        List<PredefinedNotesDTO> actual = returned
-                                        .stream()
-                                        .map(predfniedNotes -> predfniedNotes.toDTO())
-                                        .collect(Collectors.toList());
+        List<PredefinedNotesDTO> actual
+                = returned
+                    .stream()
+                    .map(predfniedNotes -> predfniedNotes.toDTO())
+                    .collect(Collectors.toList());
         when(predefinedNotesRepository.findAll()).thenReturn(returned);
         Assert.assertEquals(predefinedNotesService.getAllPredefniedNotes() ,
                actual );
@@ -72,21 +73,21 @@ public class PredefinedNoteServiceUnitTest {
         PredefinedNotesModel middlePredefinedNotesModel = new PredefinedNotesModel();
         middlePredefinedNotesModel.setId(1);
         middlePredefinedNotesModel.setMessage("");
-        middlePredefinedNotesModel.setMaximumTemperture(10.0);
-        middlePredefinedNotesModel.setMinimumTemperture(1.0);
+        middlePredefinedNotesModel.setMaximumTemperature(10.0);
+        middlePredefinedNotesModel.setMinimumTemperature(1.0);
         when(predefinedNotesRepository.findById(1)).thenReturn(Optional.of(middlePredefinedNotesModel));
 
         PredefinedNotesModel predefinedNotesModel = new PredefinedNotesModel();
         predefinedNotesModel.setId(1);
         predefinedNotesModel.setMessage("Note1");
-        predefinedNotesModel.setMaximumTemperture(10.0);
-        predefinedNotesModel.setMinimumTemperture(1.0);
+        predefinedNotesModel.setMaximumTemperature(10.0);
+        predefinedNotesModel.setMinimumTemperature(1.0);
         when(predefinedNotesRepository.save(any(PredefinedNotesModel.class)))
                 .thenReturn(predefinedNotesModel);
 
 
 
-        Assert.assertEquals(predefinedNotesService.savePredfinedNotes(predefinedNotesDROList),predefinedNotesDTOList);
+        Assert.assertEquals(predefinedNotesService.savePredefinedNotes(predefinedNotesDROList),predefinedNotesDTOList);
     }
 
     @Test
