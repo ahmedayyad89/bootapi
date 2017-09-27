@@ -46,7 +46,7 @@ public class PredefinedNoteServiceUnitTest {
                 new ArrayList<>();
         List<PredefinedNotesDTO> actual = returned
                 .stream()
-                .map(predfniedNotes -> predfniedNotes.toDTO())
+                .map(predefniedNotes -> predefniedNotes.toDTO())
                 .collect(Collectors.toList());
         returned.add(new PredefinedNotesModel());
         when(predefinedNotesRepository.findAll()).thenReturn(returned);

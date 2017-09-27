@@ -99,6 +99,13 @@
 			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
         <!--<dependency>-->
             <!--<groupId>org.testng</groupId>-->

@@ -24,14 +24,14 @@ public class PredefinedNotesController {
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
-    public List<PredefinedNotesDTO> getAllPredfinedNotes() {
+    public List<PredefinedNotesDTO> getAllPredefinedNotes() {
         return predefinedNotesService.getAllPredefniedNotes();
     }
 
 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes", method = {POST, PUT})
-    public List<PredefinedNotesDTO> savePredfinedNotes(@RequestBody ArrayList<PredefinedNotesDRO> predfinedNotesDROS) {
+    public List<PredefinedNotesDTO> savePredefinedNotes(@RequestBody ArrayList<PredefinedNotesDRO> predfinedNotesDROS) {
         System.out.println(predfinedNotesDROS.size());
         return predefinedNotesService.savePredfinedNotes(predfinedNotesDROS);
     }
