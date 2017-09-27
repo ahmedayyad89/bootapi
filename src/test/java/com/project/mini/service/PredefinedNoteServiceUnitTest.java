@@ -38,7 +38,7 @@ public class PredefinedNoteServiceUnitTest {
                     .map(predfniedNotes -> predfniedNotes.toDTO())
                     .collect(Collectors.toList());
         when(predefinedNotesRepository.findAll()).thenReturn(returned);
-        Assert.assertEquals(predefinedNotesService.getAllPredefniedNotes() ,
+        Assert.assertEquals(predefinedNotesService.getAllPredefinedNotes() ,
                actual );
     }
     @Test
@@ -51,7 +51,7 @@ public class PredefinedNoteServiceUnitTest {
                 .collect(Collectors.toList());
         returned.add(new PredefinedNotesModel());
         when(predefinedNotesRepository.findAll()).thenReturn(returned);
-        Assert.assertNotEquals(predefinedNotesService.getAllPredefniedNotes() ,
+        Assert.assertNotEquals(predefinedNotesService.getAllPredefinedNotes() ,
                 actual );
     }
 

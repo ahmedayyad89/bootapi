@@ -62,7 +62,7 @@ public class PredefinedNotesControllerUnitTest {
     @Test
     public void testGetAllPredefinedNotes() throws Exception {
 
-        when(predefinedNotesService.getAllPredefniedNotes()).thenReturn(predefinedNotesDTOList);
+        when(predefinedNotesService.getAllPredefinedNotes()).thenReturn(predefinedNotesDTOList);
 
         ResultActions resultActions = mvc.perform(get("/admin/predefnotes/get"))
                 .andExpect(status().isOk());

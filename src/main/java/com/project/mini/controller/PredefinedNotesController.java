@@ -25,7 +25,7 @@ public class PredefinedNotesController {
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(value = "/admin/predefnotes/get", method = {GET})
     public List<PredefinedNotesDTO> getAllPredefinedNotes() {
-        return predefinedNotesService.getAllPredefniedNotes();
+        return predefinedNotesService.getAllPredefinedNotes();
     }
 
 
