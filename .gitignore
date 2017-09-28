@@ -23,3 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+nginx-1.12.1/logs/access.log
+nginx-1.12.1/logs/nginx.pid
+nginx-1.12.1/logs/error.log
+nginx-1.12.1/logs/nginx.pid
