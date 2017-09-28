@@ -29,20 +29,14 @@ public class NoteService {
     public NoteDTO findByDate(Date dateId) {
         //find out if a note exists for that date
         Optional<NoteModel> noteOptional= noteRepository.findByDate(dateId);
-        if(noteOptional.isPresent()){ // A note does exist for that date, return it{
+        if(noteOptional.isPresent()){ // A note does exist for that date, return it
             NoteModel noteModel =
                     noteOptional.get();
             return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());
         } else {
-            //Make a new noteModel object, for today
             NoteModel noteModel = new NoteModel(null , null , null);
             noteModel.setDate(new Date(Calendar.getInstance().getTime().getTime()));
-            //Get today's weatherModel, save it in the noteModel object
             noteModel.setWeatherModel(WeatherFactory.getWeather());
-            // get default predefined noteModel for today's temperature
-//            noteModel.setNote(preDefNoteService.get(1).getPredeNote(noteModel.getWeatherModel().getTemp()-(float)273.15));
-            //save today's noteModel in the db for future retrieval
-
             noteModel.setNote(predefinedNotesService.getPredefinedNote(noteModel.getWeatherModel().getTemp()));
             noteModel = noteRepository.save(noteModel);
             return new NoteDTO(noteModel.getDate() , noteModel.getNote() , noteModel.getWeatherModel());

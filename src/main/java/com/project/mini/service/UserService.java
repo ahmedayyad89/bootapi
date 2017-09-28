@@ -22,7 +22,7 @@ public class UserService {
         Optional<UserModel> userOptional = userRepository.findById(id);
         if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException
-                    ("UserModel With id="+id+" has not been found.");
+                    ("User not found.");
         }
         return userOptional.get().toDTO();
     }
@@ -43,7 +43,7 @@ public class UserService {
         Optional<UserModel> userOptional = userRepository.findByEmail(email);
         if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException
-                    ("UserModel With email="+email+" has not been found.");
+                    ("User no found.");
         }
         return userOptional.get().toDTO();
     }
