@@ -1,4 +1,4 @@
-package com.project.mini.errorHandler;
+package com.project.mini.error.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

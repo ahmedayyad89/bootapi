@@ -43,7 +43,7 @@ public class UserService {
         Optional<UserModel> userOptional = userRepository.findByEmail(email);
         if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException
-                    ("User no found.");
+                    ("User not found.");
         }
         return userOptional.get().toDTO();
     }

@@ -1,4 +1,4 @@
-package com.project.mini.errorHandler;
+package com.project.mini.error.handler;
 
 import com.project.mini.exception.UserAlreadyExistsException;
 import org.springframework.core.Ordered;
@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,6 +45,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserAlreadyExistsException.class)
     private ResponseEntity<Object> handleUserAlreadyExists(UserAlreadyExistsException ex) {
         String error = "User Already Exits";
+        return buildResponseEntity(new ApiError(BAD_REQUEST, error, ex));
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    private ResponseEntity<Object> handleUsernameNotFound(UsernameNotFoundException ex)
+    {
+        String error = "User not found.";
         return buildResponseEntity(new ApiError(BAD_REQUEST, error, ex));
     }
 }
