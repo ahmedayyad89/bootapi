@@ -1,5 +1,6 @@
 package com.project.mini.service;
 
+import com.project.mini.exception.UserAlreadyExistsException;
 import com.project.mini.dro.UserDRO;
 import com.project.mini.dto.UserDTO;
 import com.project.mini.model.UserModel;
@@ -27,7 +28,7 @@ public class UserService {
     }
     public UserDTO save(UserDRO userDRO) throws Exception{
         if (exists(userDRO.getEmail())){
-            throw new Exception("User Email Already exists");
+            throw new UserAlreadyExistsException("User Email Already exists");
         }
         UserModel userModel = new UserModel(null ,
                 userDRO.getName() , userDRO.getEmail() , userDRO.getPassword() ,

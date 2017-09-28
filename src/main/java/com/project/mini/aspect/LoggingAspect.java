@@ -29,10 +29,10 @@ public class LoggingAspect {
     }
 
 
-    @AfterThrowing(pointcut = "execution(* com.project.mini.*.*.*(..))", throwing = "exception")
-    public void interceptor(Exception exception) {
-        logger.error("intercepted "+exception.getCause().getMessage());
-    }
+//    @AfterThrowing(pointcut = "execution(* com.project.mini.*.*.*(..))", throwing = "exception")
+//    public void interceptor(Exception exception) {
+//        logger.error("intercepted "+exception.getCause().getMessage());
+//    }
 
 
     @AfterReturning(value = "execution(* com.project.mini.*.*.*(..))", returning = "result")
