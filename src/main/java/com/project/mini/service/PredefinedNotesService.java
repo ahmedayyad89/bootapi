@@ -43,12 +43,7 @@ public class PredefinedNotesService {
     }
     public String getPredefinedNote(double temperature) {
         List<PredefinedNotesDTO> allPredefinedNotes = this.getAllPredefinedNotes();
-        System.out.println("\n\n\n"+allPredefinedNotes.size()+"\n\n\n");
-        System.out.println(temperature);
         for (PredefinedNotesDTO note : allPredefinedNotes) {
-            System.out.println(""+note.getMinimumTemperature()+" "+note.getMaximumTemperature());
-            System.out.println((temperature >= note.getMinimumTemperature() &&
-                    note.getMaximumTemperature() > temperature));
             if(temperature >= note.getMinimumTemperature() &&
                     note.getMaximumTemperature() > temperature) {
                 return  note.getMessage();
