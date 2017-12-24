@@ -1,0 +1,57 @@
+spring:
+    profiles:
+      active: production
+    jpa:
+        hibernate:
+          naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        show_sql: true
+#        format_sql: true
+
+
+logging:
+    level:
+      org:
+        springframework:
+          security: info
+        hibernate: info
+      com: debug
+      root: info
+    pattern:
+      console: "%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
+
+endpoints:
+  cors:
+    cross-origins: http://127.0.0.1:3000/*
+
+weather:
+  apis:
+    name: openWeatherMap
+    url: http://api.openweathermap.org/data/2.5/weather?id=360630&APPID=e847d37e15ad8c49264375cab68417f0
+
+---
+
+spring:
+    profiles : production
+    datasource:
+        url: jdbc:mysql://localhost:3306/weather_app
+        username: root
+        password: root
+    jpa:
+        properties:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+---
+
+spring:
+    profiles: test
+    datasource:
+        url: jdbc:h2:mem:~/weather_app
+        username: sa
+        password:
+        driver-class-name: org.h2.Driver
+    jpa:
+        hibernate:
+          ddl-auto: none
+        properties:
+          dialect: org.hibernate.dialect.H2Dialect
+flyway:
+  schemas: PUBLIC
