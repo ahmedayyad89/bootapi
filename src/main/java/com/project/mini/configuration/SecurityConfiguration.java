@@ -32,8 +32,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll() // Should igonre OPTIONS requests
-                .and()
-                .csrf().disable().headers().frameOptions().disable();
+                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll();
     }
 }

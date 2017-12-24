@@ -27,6 +27,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping(value= "/user/**", method=RequestMethod.OPTIONS)
+    public void corsHeaders(HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
+        response.addHeader("Access-Control-Max-Age", "3600");
+    }
+
     @Secured({"ROLE_ADMIN" , "ROLE_USER"})
     @RequestMapping(value = "/user/login", method= GET)
     public UserDTO login() throws Exception{
