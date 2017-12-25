@@ -21,7 +21,7 @@ logging:
 
 endpoints:
   cors:
-    cross-origins: http://bootclient/*
+    cross-origins: http://bootclient.kmt.orange.com/*
 
 weather:
   apis:
