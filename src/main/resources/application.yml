@@ -21,7 +21,7 @@ logging:
 
 endpoints:
   cors:
-    cross-origins: http://127.0.0.1:3000/*
+    cross-origins: http://bootclient/*
 
 weather:
   apis:
